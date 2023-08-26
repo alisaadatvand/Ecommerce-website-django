@@ -1,0 +1,336 @@
+
+{% load static %}
+
+{% block content %}
+<head>
+    <title>Panel</title>
+
+    <style>
+      .title{
+        font-family: yekan !important;
+        font-size: 30px;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: yekan !important;
+      }
+      .features {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+      .features .container {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+      }
+      .features .container .box {
+        border: 1px solid #ccc;
+        max-width: 400px;
+        width: 300px;
+      }
+      /*
+      .features .container .image {
+        background-color: #777;
+        height: 200px;
+        position: relative;
+        overflow: hidden;
+      }
+      .features .container .box .image::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+      }
+      .features .container .quality .image::before {
+        background-color: rgb(244 64 54 / 60%);
+      }
+      .features .container .time .image::before {
+        background-color: rgb(0 150 136 / 60%);
+      }
+      .features .container .passion .image::before {
+        background-color: rgb(3 169 244 / 60%);
+      }
+      .features .container .image::after {
+        content: "";
+        position: absolute;
+        border-style: solid;
+        border-color: transparent transparent white transparent;
+        border-width: 0 0 170px 600px;
+        left: -15px;
+        bottom: -2px;
+        transition: 0.3s;
+      }
+      .features .container .box:hover .image::after {
+        border-width: 170px 600px 170px 0;
+      }
+      .features .container .image img {
+        max-width: 100%;
+      } */
+      .features .container .box .text {
+        text-align: center;
+        padding: 30px;
+      }
+      .features .container .box .text h3 {
+        font-size: 30px;
+        font-weight: bold;
+        position: relative;
+        width: fit-content;
+        margin: 0 auto;
+      }
+      .features .container .box .text h3::after {
+        content: "";
+        position: absolute;
+        height: 3px;
+        width: calc(100% - 30px);
+        left: 15px;
+        bottom: -10px;
+        background-color: red;
+      }
+      .features .container .quality .text h3::after {
+        background-color: rgb(244 64 54);
+      }
+      
+      .features .container .time .text h3::after {
+        background-color: rgb(0 150 136);
+      }
+      .features .container .passion .text h3::after {
+        background-color: rgb(3 169 244);
+      }
+      .features .container .box .text p {
+        margin: 30px 0 20px;
+        line-height: 1.7;
+        color: #666666;
+        font-size: 20px;
+      }
+      .features .container .box a {
+        display: block;
+        width: fit-content;
+        margin: 0 auto 15px;
+        border: 3px solid;
+        padding: 10px 30px;
+        border-radius: 6px;
+        font-size: 20px;
+        font-weight: bold;
+        transition: 0.3s;
+        text-decoration: none;
+      }
+      .features .container .quality a {
+        color: rgb(244 64 54);
+        border-color: rgb(244 64 54);
+        background: linear-gradient(to right, rgb(244 64 54) 50%, white 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+      }
+      .features .container .quality:hover a {
+        background-position: left bottom;
+        color: white;
+      }
+      .features .container .time a {
+        border-color: rgb(0 150 136);
+        background: linear-gradient(to right, rgb(0 150 136) 50%, white 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+        color: rgb(0 150 136);
+      }
+      .features .container .time:hover a {
+        background-position: left bottom;
+        color: white;
+      }
+      .features .container .passion a {
+        border-color: rgb(3 169 244);
+        background: linear-gradient(to right, rgb(3 169 244) 50%, white 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+        color: rgb(3 169 244);
+      }
+      .features .container .passion:hover a {
+        background-position: left bottom;
+        color: white;
+      }
+      
+      /**/
+      .features .container .qualitya .text h3::after {
+        background-color: rgb(147, 168, 172);
+      }
+    
+      .features .container .qualitya a {
+        border-color: rgb(147, 168, 172);
+        background: linear-gradient(to right, rgb(147, 168, 172) 50%, white 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+        color: rgb(147, 168, 172);
+      }
+      .features .container .qualitya:hover a {
+        background-position: left bottom;
+        color: white;
+      }
+    
+      /**/
+    
+      .features .container .timea .text h3::after {
+        background-color: rgb(106, 76, 147);
+      }
+    
+      .features .container .timea a {
+        border-color: rgb(106, 76, 147);
+        background: linear-gradient(to right, rgb(106, 76, 147) 50%, white 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+        color: rgb(106, 76, 147);
+      }
+      .features .container .timea:hover a {
+        background-position: left bottom;
+        color: white;
+      }
+    
+      /**/
+    
+      .features .container .passiona .text h3::after {
+        background-color: rgb(255, 202, 58);
+      }
+    
+      .features .container .passiona a {
+        border-color: rgb(255, 202, 58);
+        background: linear-gradient(to right, rgb(255, 202, 58) 50%, white 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+        color: rgb(255, 202, 58);
+      }
+      .features .container .passiona:hover a {
+        background-position: left bottom;
+        color: white;
+      }
+    
+        /**/
+    
+        .features .container .timeb .text h3::after {
+            background-color: rgb(188, 108, 37);
+          }
+        
+          .features .container .timeb a {
+            border-color: rgb(188, 108, 37);
+            background: linear-gradient(to right, rgb(188, 108, 37) 50%, white 50%);
+            background-size: 200% 100%;
+            background-position: right bottom;
+            color: rgb(188, 108, 37);
+          }
+          .features .container .timeb:hover a {
+            background-position: left bottom;
+            color: white;
+          }
+          h1{
+            color:red;
+            margin-top:40px;
+          }
+          .dena{
+            text-decoration:none;
+            display: block;
+              width: 40%;
+              height: 40px;
+              background-color:#EF4056 ;
+              text-align: center;
+              border-radius: 8px;
+              color: whitesmoke;
+              margin-top: 30px;
+              font-family: yekan;
+              font-size: 20px;
+              transition: 300ms;
+          }
+          .dena:hover{
+              color: #2b2b2b;
+              background-color:#e8102d ;
+          }
+          
+    </style>
+</head>
+{% if user.is_admin %}
+<div align="center">
+  <a href="{% url 'home' %}" class="dena">خروج از پنل</a>
+  </div>
+<br><br><br>
+
+<p style="text-align:center" class="title">به پنل خوش آمدید</p>
+
+<div class="features" id="features">
+    <div class="container">
+      <div class="box quality">
+        <div class="text">
+          <h3>سفارشات</h3>
+          <p>
+           مشاهده و ویرایش سفارشات
+          </p>
+        </div>
+        <a href="#">بیشتر</a>
+      </div>
+      <div class="box time">
+        <div class="text">
+          <h3>محصولات</h3>
+          <p>
+            مشاهده و ویرایش محصولات
+          </p>
+        </div>
+        <a href="{% url 'product_view_admin' %}">بیشتر</a>
+      </div>
+      <div class="box passion">
+        <div class="text">
+          <h3>ظرفیت</h3>
+          <p>
+            مشاهده و ویرایش ظرفیت ها
+          </p>
+        </div>
+        <a href="{% url 'stock_view' %}">بیشتر</a>
+      </div>
+    </div>
+</div>
+
+<div class="features" id="features">
+    <div class="container">
+      <div class="box timea">
+        <div class="text">
+          <h3>دسته بندی</h3>
+          <p>
+            مشاهده و ویرایش دسته بندی ها
+          </p>
+        </div>
+        <a href="{% url 'category_view' %}" >بیشتر</a>
+      </div>
+      <div class="box passiona">
+        <div class="text">
+          <h3>اساتید</h3>
+          <p>
+            مشاهده و ویرایش اساتید
+          </p>
+        </div>
+        <a href="{% url 'Teacher_view' %}">بیشتر</a>
+      </div>
+    </div>
+</div>
+
+<div class="features" id="features">
+    <div class="container">
+      <div class="box timeb">
+        <div class="text">
+          <h3>شهر ها</h3>
+          <p>
+            مشاهده و ویرایش شهر ها
+          </p>
+        </div>
+        <a href="{% url 'city_view' %}">بیشتر</a>
+      </div>
+    </div>
+</div>
+<hr>
+{% else %}
+<h1 align="center" dir="rtl"> شما به این صفحه دسترسی ندارید </h1>
+<h1 align="center" dir="rtl"> برای دسترسی اول وارد سایت بشوید</h1>
+<div align="center">
+<a href="{% url 'home' %}" class="dena">صفحه اصلی</a>
+</div>
+{% endif %}
+{% endblock %}
+

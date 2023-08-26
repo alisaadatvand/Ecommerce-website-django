@@ -1,0 +1,29 @@
+{% extends 'register_base.html' %}
+{% load static %}
+
+<head>
+    <title>Panel</title>
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesUpdateView.css' %}">
+    {% endblock %}
+
+</head>
+
+{% block content %}
+<br><br>
+<div class="update-view-container">
+  <h2 class="update-title"> حذف {{ object }} </h2>
+  <form method="post" class="update-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p>آیا می خواهید سفارش با اطلاعات زیر را حذف کنید؟</p><br>
+    <strong>"{{ object }}"</strong>
+    <div class="update-buttons">
+      <a class="update-btn update-btn-cancel" href="{% url 'order_view' %}">انصراف</a>
+      <p>&nbsp;&nbsp;&nbsp; </p>
+      <button type="submit" class="update-btn update-btn-delete">حذف</button>
+    </div>
+  </form>
+</div>
+<br><br>
+{% endblock %}

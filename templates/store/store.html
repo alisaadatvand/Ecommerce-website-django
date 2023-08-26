@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- ========================= SECTION PAGETOP ========================= -->
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+    <div class="container">
+    
+    <div class="row">
+        <aside class="col-md-3">
+            
+    <div class="card">
+        <article class="filter-group">
+            <header class="card-header">
+                <a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
+                    <i class="icon-control fa fa-chevron-down"></i>
+                    <h6 class="title">دسته بندی</h6>
+                </a>
+            </header>
+            <div class="filter-content collapse show" id="collapse_1" style="">
+                <div class="card-body">
+                    
+                    <ul class="list-menu">
+                        <li><a href="{% url 'store' %}" class="a-menu-category">همه دوره ها</a></li>
+                    {% for category in links %}
+                        <li><a href="{{ category.get_url }}" class="a-menu-category">{{ category.category_name }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div> <!-- card-body.// -->
+            </div>
+        </article> <!-- filter-group  .// -->
+
+
+        
+        <article class="filter-group">
+            <header class="card-header">
+                <a href="#" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" class="">
+                    <i class="icon-control fa fa-chevron-down"></i>
+                    <h6 class="title">رنج قیمت </h6>
+                </a>
+            </header>
+            <div class="filter-content collapse show" id="collapse_3" style="">
+                <div class="card-body">
+                    
+                    <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label>کمترین</label>
+                      <!-- <input class="form-control" placeholder="$0" type="number"> -->
+                          <select class="mr-2 form-control">
+                            <option value="0">0</option>
+                            <option value="5000">5,000</option>
+                            <option value="10000">10,000</option>
+                            <option value="15000">15,000</option>
+                            <option value="20000">20,000</option>
+                            <option value="50000">50,000</option>
+                            <option value="100000">100,000</option>
+                        </select>
+                    </div>
+                    <div class="form-group text-right col-md-6">
+                      <label>بیشترین</label>
+                          <select class="mr-2 form-control">
+                            <option value="5000">5,000</option>
+                            <option value="10000">10,000</option>
+                            <option value="15000">15,000</option>
+                            <option value="20000">20,000</option>
+                            <option value="50000">50,000</option>
+                            <option value="100000">100,000</option>
+                            <option value="200000">200,000+</option>
+                        </select>
+                    </div>
+                    </div> <!-- form-row.// -->
+                    <button class="btn btn-block btn-primary">اعمال فیلتر</button>
+                </div><!-- card-body.// -->
+            </div>
+        </article> <!-- filter-group .// -->
+        
+    </div> <!-- card.// -->
+    
+        </aside> <!-- col.// -->
+        <main class="col-md-9">
+    
+    <header class="border-bottom mb-4 pb-3">
+            <div class="form-inline" >
+                <span class="mr-md-auto"> <b>{{ products_count }}</b> مورد یافت شد</span>
+                
+            </div>
+    </header><!-- sect-heading -->
+    
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4">
+            <figure class="card card-product-grid">
+                <div class="img-wrap"> 
+                    
+                    <img  src="{{ product.images.url }}">
+                    
+                </div> <!-- img-wrap.// --><br>
+                <a href="{{ product.get_url }}" class="title">	<b><p style="color: black;text-align:center;">{{ product.product_name }}</b></p></a>
+                <hr><br>
+                            <p style="color: black;text-align:right;padding-right:10px"><b>مدت زمان:</b> {{ product.description }} ساعت </p>
+                            <p style="color: black;text-align:right;padding-right:10px"><b>تاریخ:</b> {{ product.date }}</p>
+                            <p style="color: black;text-align:right;padding-right:10px"><b>مدرس:</b> {{ product.teacher }}</p>
+                            <p style="color:red;text-align:right;padding-right:10px"><b>نوع آموزش:</b> {{ product.category.category_name }}</p>
+                            <div class="price mt-1" style="padding-left:10px">{{ product.price }} تومان</div> <!-- price-wrap.// -->
+                            <br>
+
+                           
+                    <a href="{{ product.get_url }}" class="btn btn-block btn-primary "><b>جزییات دوره</b></a>
+                </figcaption>
+            </figure>
+        </div> <!-- col.// -->
+        {% endfor %}
+    </div>
+    
+        <nav class="mt-4" aria-label="Page navigation sample">
+            <ul class="pagination">
+              <li class="page-item disabled"><a class="page-link" href="#">قبلی</a></li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">بعدی</a></li>
+            </ul>
+          </nav>
+        </main> <!-- col.// -->
+
+    </div> <!-- container .//  -->
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+
+</body>
+</html>
+
+{% endblock %}

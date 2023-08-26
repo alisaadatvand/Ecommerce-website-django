@@ -1,0 +1,90 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#par-swip {
+  width: 100%;
+  background: url("../images/bg-about.jpg") center center no-repeat fixed;
+  background-size: cover;
+  box-sizing: border-box;
+}
+#par-swip > .container {
+  display: grid;
+  width: 80%;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 25px;
+}
+#par-swip > .container > .par {
+  width: 100%;
+  box-sizing: border-box;
+}
+#par-swip > .container > .par > h2 {
+  width: 100%;
+  text-align: right;
+  color: #ffef00;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 23px;
+  letter-spacing: -0.225px;
+  box-sizing: border-box;
+}
+#par-swip > .container > .par > .row {
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+#par-swip > .container > .par > .row > p {
+  width: 100%;
+  direction: rtl;
+  text-align: justify;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  box-sizing: border-box;
+  margin: 0;
+}
+#par-swip > .container > .par > .row > h2 {
+  width: 100%;
+  text-align: right;
+  color: #ffef00;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 23px;
+  letter-spacing: -0.225px;
+  box-sizing: border-box;
+}
+#par-swip > .container > .par > .row > a {
+  display: inline-block;
+  width: auto ;
+  text-align: right;
+  color: #00f3ff;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 23px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+#par-swip > .container > .swip {
+  width: 100%;
+  max-height: 375px !important;
+}
+
+#par-swip > .container > .swip img {
+    width: 100%;
+    max-height: 375px !important;
+    object-fit: cover;
+    object-position: center;
+    scale: 1/1;
+    
+  }
+

@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    
+<section class="section-content padding-y bg">
+    <div class="container">
+    
+    <!-- ============================ COMPONENT 1 ================================= -->
+    <div class="card">
+        <div class="row no-gutters">
+            <aside class="col-md-6">
+    <article class="gallery-wrap"> 
+        <div class="img-big-wrap">
+           <a href="#"><img src="{{ single_product.images.url }}"></a>
+        </div> <!-- img-big-wrap.// -->
+        
+    </article> <!-- gallery-wrap .end// -->
+            </aside>
+            <main class="col-md-6 border-left">
+    <article class="content-body">
+    
+    <h2 class="title" style="color: black;text-align:center;">{{ single_product.product_name }}</h2>
+    <hr>
+    <div class="mb-3"> 
+      <p style="color: black;text-align:right;"><b>مدت زمان: </b> {{ single_product.description  }}</p>
+      <p style="color: black;text-align:right;"><b>تاریخ: </b> {{ single_product.date }}</p>
+      <p style="color: black;text-align:right;"><b>مدرس: </b> {{ single_product.teacher }}</p>
+      <div class="price mt-1"> <p style="color:black;text-align:right;"><b>هزینه: </b>{{ single_product.price }} تومان</div> <!-- price-wrap.// -->
+    </div> 
+        <hr>
+        <div class="mb-3"> 
+          <p style="color: black;text-align:center;"><b>ظرفیت دوره: </b> <span style="color: blue">{{ single_product.stock  }}
+          <p style="color: black;text-align:center;"><b>ظرفیت باقی مانده: </b> <span style="color: green">{{ single_product.stock }}
+          <p style="color: black;text-align:center;"><b>زمان ثبت نام: </b> <span style="color: red">{{ single_product.reg_date }}</p>
+        </div> 
+        <hr>
+        {% if single_product.stock <= 0 %}
+        <button class="btn  btn-secondary" disabled> <span class="text" color="white" >ظرفیت تکمیل است</span> </button>
+          
+        {% else %}
+          <a href="{% url 'add_cart' single_product.id %}" class="btn  btn-primary"> <span class="text">ثبت نام</span> <i class="fas fa-shopping-cart"></i>  </a>
+
+          <a href="{% url 'store' %}" class="btn  btn-warning"> <span class="text"> بازگشت </span></a>
+        
+        {% endif %}
+        
+      </article> <!-- product-info-aside .// -->
+            </main> <!-- col.// -->
+        </div> <!-- row.// -->
+    </div> <!-- card.// -->
+    <!-- ============================ COMPONENT 1 END .// ================================= -->
+    <br>
+    <section style="background-color:	#f0f0f0"> 
+	
+			<div class="container" style="background-color: white;">
+        <h2 style="text-align:right;color:#c10000;">:توضیحات</h2>
+        <p style="color: black;text-align:right;font-size:18px;"><b>{{ single_product.full_description  }}</b></p>
+    </section>
+    <br>
+    
+    <div class="row">
+                <div class="col-md-9">
+    
+        <header class="section-heading">
+            <h3 style="text-align:right">نظرات </h3>  
+            
+        </header>
+    
+        <article class="box mb-3">
+            <div class="icontext w-100">
+                <img src="{% static './images/avatars/avatar2.jpg' %}" class="img-xs icon rounded-circle">
+                <div class="text">
+                    <span class="date text-muted float-md-right">1402.02.30 </span>  
+                    <h6 class="mb-1">علی سعادت وند </h6>
+                    
+                </div>
+            </div> <!-- icontext.// -->
+            <div class="mt-3">
+                <b><p style="text-align:right;font-size:14px;">
+                    ممنون دوره خیلی خوب و مفیدی بود. حتما این دوره رو به بقیه دوستان معرفی خواهم کرد و لطفا اگر میشه دوره های بیشتری
+                    در همین زمینه برگزار کنید که بتونه یک چشم انداز مفید برای ما ایجاد کنه 
+                </p></b>	
+            </div>
+        </article>
+    
+        
+    
+        </div> <!-- col.// -->
+    </div> <!-- row.// -->
+    
+    
+    </div> <!-- container .//  -->
+    </section>
+{% endblock %}

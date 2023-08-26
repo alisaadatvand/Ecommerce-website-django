@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="section-pagetop bg">
+    <div style="font-family:IRANYekan;color:#c10000;" class="container">
+        <h3 class="title-page"><p style="color:#c10000;text-align:center;">دوره های آموزشی</p></h3>
+        
+    </div> <!-- container //  -->
+</section>
+    <!-- ========================= SECTION INTRO END// ========================= -->
+<!-- ========================= SECTION  ========================= -->
+<section class="section-name padding-y-sm"
+		style="
+			background: #f0f0f0
+		"
+>
+<div class="container">
+
+<header class="section-heading">
+	<h3 class="section-title" ><p style="text-align:right">دوره های پر فروش</p></h3>
+	{% if user.is_authenticated %}
+	<a href="{% url 'store' %}" class="btn btn-outline-primary "><p style="font-size:16px">مشاهده همه </p></a>
+	{% else %}
+	<a href="{% url 'login' %}" class="btn btn-outline-primary "><p style="font-size:16px">مشاهده همه </p></a>
+	{% endif %}
+</header><!-- sect-heading -->
+	
+<div class="row">
+	{% for product in products %}
+	<div class="col-md-3">
+		<div class="card card-product-grid">
+			<img src="{{ product.images.url }}">
+			<figcaption class="info-wrap">
+				<b><p style="color: black;text-align:center;">{{ product.product_name }}</b></p>
+				<hr><br>
+				<p style="color: black;text-align:right;"><b>مدت زمان:</b> {{ product.description }} ساعت </p>
+				<p style="color: black;text-align:right;"><b>تاریخ:</b> {{ product.date }}</p>
+				<p style="color: black;text-align:right;"><b>مدرس:</b> {{ product.teacher }}</p>
+				<p style="color:red;text-align:right;"><b>نوع آموزش:</b> {{ product.category.category_name }}</p>
+				<div class="price mt-1">{{ product.price }} تومان</div> <!-- price-wrap.// -->
+				<br>
+				{% if user.is_authenticated %}
+				<div style="background-color:#0b8ac8;width:100%;height:35px;
+				text-align:center;border-radius:0 0 10px 10px;padding-top:6px;
+				float:right;libe-height:20px !important;">
+				<a href="{{ product.get_url }}" class="doreh-btn-more-full"><p style="color:white"><b>جزئیات دوره و ثبت نام</b></p>
+				</a>
+			    </div>
+				{% else %}
+				<div style="background-color:#0b8ac8;width:100%;height:35px;
+				text-align:center;border-radius:0 0 10px 10px;padding-top:6px;
+				float:right;libe-height:20px !important;">
+				<a href="{% url 'login' %}"  class="doreh-btn-more-full"><p style="color:white"><b>جزئیات دوره و ثبت نام</b></p>
+				</a>
+			    </div>
+				{% endif %}
+			</figcaption>
+		</div>
+	</div> <!-- col.// -->
+	{% endfor %}
+</div> <!-- row.// -->
+
+</div><!-- container // -->
+</section>
+<!-- ========================= SECTION  END// ========================= -->
+<section id="par-swip"> 
+	
+			<div class="container">
+				<div class="swip">
+					<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+						<div class="carousel-inner">
+						  <div class="carousel-item active">
+							<img src="{% static "images/swiper1.jpeg" %}" class="d-block w-100 " alt="...">
+						  </div>
+						  <div class="carousel-item">
+							<img src="{% static "images/swiper2.jpeg" %}" class="d-block w-100" alt="...">
+						  </div>
+						  <div class="carousel-item">
+							<img src="{% static "images/swiper3.jpeg" %}" class="d-block w-100" alt="...">
+						  </div>
+						</div>
+						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+						  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						  <span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+						  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+						  <span class="visually-hidden">Next</span>
+						</button>
+					  </div>
+				</div>
+				<div class="par">
+					<h2>موسسه پرتو پيشرو آوا اروند</h2>
+						<div class="row">					
+							<p>
+								مجتمع آموزشی پرتو پيشرو آوا اروند در اوایل سال 1388  تأسیس و فعالیت آموزشی خود را از همان سال با کادری مجرب از اعضای هیات علمی دانشگاه های کشور شروع کرد. هدف اصلی  مجتمع برگزاری دوره آموزشی جهت ارتقای سطح دانش، بینش و توان شاغلین دولتی و غیر دولتی مرتبط با حوزه های علم و صنعت و ایجاد مهارت های شغلی در ایشان مطابق جدیدترین استاندارد های آموزشی جهانی می باشد. در این موسسه اساتیدی  با مدارک تحصیلی عالی از بهترین دانشگاه های کشور حضور دارند که آماده ارایه هر گونه خدمات آموزشی شامل امکان سنجی، برنامه ریزی ، اجرا و  مشاوره در سطوح مختلف می باشند
+							</p>
+							<h2>: مجوزهای موسسه</h2>
+							<p>
+								سازمان فنی و حرفه ای کشور - وزارت میراث فرهنگی، صنایع دستی و گردشگری کل کشور - سازمان اداری و استخدامی کل کشور - مرکز تحقیقات، تعلیمات حفاظت فنی و  ایمنی  وزارت کار - وزارت صنعت، معدن و تجارت - بنیاد ICDL  ایران
+							</p>
+								<a href="{% url 'about'%}" style="float:left">ادامه...</a>
+						</div>
+				</div>
+			</div>
+</section>
+<section  style="background-color:	#f0f0f0">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="divider-title" style="border-bottom: solid 1px #cacaca;position: relative;margin-bottom:30px">
+					<hr>
+					<h2 style="text-align:right">اساتید موسسه</h2>
+					<div class="bbb_viewed_title_container_line"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 doreh-btn-all">
+				<a class="btn btn-light btn-block" href="{% url 'teacher'%}">مشاهده بیشتر</a>
+			</div>
+		</div>
+	</div>
+
+
+
+</section>
+</body>
+</html>
+
+{% endblock %}

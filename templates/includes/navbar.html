@@ -1,0 +1,142 @@
+{% load static %}
+
+<style>
+	.font{font-family: Vazirmatn, sans-serif;}
+
+	.home-image{
+		width:100%;
+		padding: 15px;
+	}
+	.home-image>  a{
+		display: block;
+		width: 100%;
+		
+	}
+	.home-image>  a> img{
+		width: 100%;
+		object-fit: cover;
+		object-position: center;
+		scale: 1/1;
+		border-radius: 15px;
+	}
+	a{
+		text-decoration: none;
+	  }
+	.kalim{
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: center;
+		align-items: center;
+		gap: 15px;
+		margin: 0 auto;
+		padding:5px;
+		}
+</style>
+<body class="font">
+	<div align="right" dir="rtl">
+		<a href="{% url 'home' %}" class=" brand-wrap" style="text-decoration:none;">
+			<img class="logo" src="{% static 'images/logo.png' %}" ><!--لوگو سایت و لینک به صفحه اول-->
+			<span style="color:#B51A49">موسسه آموزشی پرتو پیشرو آوا اروند</span>
+		</a> 
+	</div>
+	<header style="background-color:#df2036" class="section-header">
+<nav  class="navbar p-md-0 navbar-expand-sm border-bottom border border-white">
+	
+<div class="container">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</div> 
+</nav>
+{% comment %} ----------------------------------------------------------------- {% endcomment %}
+
+	<nav  class="navbar p-md-0 navbar-expand-sm border-bottom border border-white">
+	<div class="container">
+	  <div class="kalim" style="color:white" >
+		<ul class="navbar-nav kalim">
+			{% if user.is_authenticated %}
+			<li> <a class="nav-link" href="{% url 'contact' %}"><p style="font-size:19px" class="text-white">تماس با ما</p></a></li>
+			<li> <a class="nav-link" href="{% url 'about' %}"><p style="font-size:19px" class="text-white">درباره ما</p></a></li>
+			<li> <a class="nav-link"href="{% url 'teacher' %}"><p style="font-size:19px" class="text-white">اساتید </p></a></li>
+			<li> <a class="nav-link" href="{% url 'ComingSoon'%}"><p style="font-size:19px" class="text-white">آلبوم</p></a></li>
+			<li> <a class="nav-link" href="{% url 'ComingSoon'%}"><p style="font-size:19px" class="text-white">استعلام </p></a></li>
+			<li> <a class="nav-link" href="{% url 'online' %}"><p style="font-size:19px" class="text-white">آموزش </p></a></li>
+			<li> <a class="nav-link" href="{% url 'store' %}"><p style="font-size:19px" class="text-white">فروشگاه</p></a></li>
+			<li> <a class="nav-link" href="{% url 'home' %}"><p style="font-size:19px" class="text-white">صفحه اصلی</p></a></li>
+			{% else %}
+				<li> <a class="nav-link" href="{% url 'contact' %}"><p style="font-size:19px" class="text-white">تماس با ما</p></a></li>
+				<li> <a class="nav-link" href="{% url 'about' %}"><p style="font-size:19px" class="text-white">درباره ما</p></a></li>
+				<li> <a class="nav-link" href="{% url 'teacher' %}"><p style="font-size:19px" class="text-white">اساتید </p></a></li>
+				<li> <a class="nav-link" href="{% url 'ComingSoon'%}"><p style="font-size:19px" class="text-white">آلبوم</p></a></li>
+				<li> <a class="nav-link" href="{% url 'login'%}"><p style="font-size:19px" class="text-white">استعلام </p></a></li>
+				<li> <a class="nav-link" href="{% url 'login' %}"><p style="font-size:19px" class="text-white">آموزش </p></a></li>
+				<li> <a class="nav-link" href="{% url 'login' %}"><p style="font-size:19px" class="text-white">فروشگاه</p></a></li>
+				<li> <a class="nav-link" href="{% url 'home' %}"><p style="font-size:19px" class="text-white">صفحه اصلی</p></a></li>
+				{% endif %}
+		</ul> 
+	  </div> 
+	</div> 
+	</nav>
+	<div class="home-image" id="home">
+		<a href="{%url 'home' %}">
+		<img src="{% static './images/home-image.jpg' %}" alt="موسسه پرتو پیشرو">
+	</a>
+   </div>
+
+<section >
+	<div class="container">
+<div class="row align-items-center">
+
+	<a class="nav-link" ></a>
+	<div class="col-lg  col-md-6 col-sm-12 col">
+		<form class="d-flex" role="search">
+			<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+			<button class="btn btn-success" type="submit">جستجو </button>
+		  </form>
+	</div> 
+	<div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+				<div class="d-flex justify-content-end mb-3 mb-lg-">
+					<div class="widget-header rounded pl-sm-3 pr-sm-3"
+						style="background:#f2f2f2"	>
+				{% if user.is_authenticated %}
+                    {% if user.is_admin %}
+					<small class="title  border-bottom border-light" align="center" style="margin-top:5px;margin-bottom:5px"> 
+						خوش آمدید&nbsp;&nbsp;&nbsp;<b>{{user.first_name}}</b> </small> <!--خوش آمد گویی-->
+					<div> 
+						<a href="{% url 'panel' %}" >ادمین پنل<span class="dark-transp "> | </span>
+							
+						<a href="{% url 'paschange' %}" >تغییر رمز<span class="dark-transp "> | </span>
+
+						<a href="{% url 'logout' %}" >خروج</a> <span class="dark-transp "></span> <!--خروج از سایت-->
+					</div>
+					{% else %}
+						<small class="title  border-bottom border-light" align="center" style="margin-top:5px;margin-bottom:5px"> 
+							خوش آمدید&nbsp;&nbsp;&nbsp;<b>{{user.first_name}}</b> </small> <!--خوش آمد گویی-->
+						<div> 
+							<a href="{% url 'paschange' %}" >تغییر رمز<span class="dark-transp "> | </span>
+
+							<a href="{% url 'logout' %}" >خروج</a> <span class="dark-transp "></span> <!--خروج از سایت-->
+						</div>
+					</div>
+					<a href="{% url 'cart' %}" class="widget-header pl-3 ml-3">  <!--سبد خرید-->
+						<div class="icon icon-sm rounded-circle" style="border: 2.2px solid #f2f2f2"><i class="fa fa-shopping-cart"></i></div>
+						<span class="badge badge-pill badge-danger notify">{{ quantity }}</span>
+					</a>
+						{% endif %}
+						
+					{% else %}
+					<small class="title  border-bottom border-light" align="center" style="margin-top:5px;margin-bottom:5px"> <b>مهمان</b>
+						خوش آمدید&nbsp;&nbsp; </small>
+					<div>
+						<a href="http://127.0.0.1:8000/accounts/login/" >ورود</a> <span class="dark-transp "> | </span>
+						<a href="{% url 'signup' %}"> ثبت نام</a> <!--ثبت نام در سایت-->
+					</div>
+				</div>
+					{% endif %}
+				
+				</div> 
+			</div> 
+</div>
+	</div> 
+</section> 
+</header> 

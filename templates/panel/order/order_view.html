@@ -1,0 +1,93 @@
+{% extends 'register_base.html' %}
+{% load static %}
+
+<head>
+    <title>Panel</title>
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesListView3.css' %}">
+    {% endblock %}
+
+</head>
+
+{% block content %}
+<br><br>
+<p style="text-align:center" class="title">سفارشات - ادمین پنل</p>
+<br><br>
+
+<p style="text-align:center;"><span class="access"> <b>دسترسی سریع : </b><a href="#Submitted">ثبت شده</a> | <a href="#Ready to Send">منتظر پرداخت</a> | <a href="#Sent">پرداخت شده</a></span> </p>
+
+
+<p align="right" class="branch" id="Submitted">وضعیت =&gt; ثبت شده<p>
+
+    {% for cartitem in cartitem %}
+    {% if cartitem.status == "Submitted" %}
+        <div class="list-item">
+            <div class="list-title">
+                کاربر : <span style="color:red"> {{ cartitem.cart }} </span> &nbsp;&nbsp;|&nbsp;&nbsp; 
+                محصول : <span style="color:blue"> {{ cartitem.product }} </span> &nbsp;&nbsp;|&nbsp;&nbsp;
+                وضعیت : <span style="color:IndianRed"> ثبت شده </span>
+                |&nbsp;&nbsp;
+                تعداد : <span style="color:blue"> {{ cartitem.quantity }} </span> &nbsp;&nbsp;
+                <div class="list-buttons" style="text-align:right;">
+                    <a href="{% url 'order_update' cartitem.pk %}"><button class="button-edit">ویرایش</button></a>
+                    <a href="{% url 'order_delete' cartitem.pk %}"><button class="button-delete">حذف</button></a>
+                </div>
+        </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+
+    <hr>
+
+    <p align="right" class="branch" id="Ready to Send">وضعیت =&gt; منتظر پرداخت<p>
+
+        {% for cartitem in cartitem %}
+        {% if cartitem.status == 'Ready to send' %}
+        <div class="list-item">
+            <div class="list-title">
+                کاربر : <span style="color:red"> {{ cartitem.cart }} </span> &nbsp;&nbsp;|&nbsp;&nbsp; 
+                محصول : <span style="color:blue"> {{ cartitem.product }} </span> &nbsp;&nbsp;|&nbsp;&nbsp;
+                وضعیت : <span style="color:orange"> منتظر پرداخت </span>
+                |&nbsp;&nbsp;
+                تعداد : <span style="color:blue"> {{ cartitem.quantity }} </span> &nbsp;&nbsp;
+
+                <div class="list-buttons" style="text-align:right;">
+                    <a href="{% url 'order_update' cartitem.pk %}"><button class="button-edit">ویرایش</button></a>
+                    <a href="{% url 'order_delete' cartitem.pk %}"><button class="button-delete">حذف</button></a>
+                </div>
+        </div>
+        </div>
+            {% endif %}
+        {% endfor %}
+    
+        <hr>
+
+
+<p align="right" class="branch" id="Sent">وضعیت =&gt; پرداخت شده<p>
+
+    {% for cartitem in cartitem %}
+    {% if cartitem.status == "Sent" %}
+    <div class="list-item">
+        <div class="list-title">
+            کاربر : <span style="color:red"> {{ cartitem.cart }} </span> &nbsp;&nbsp;|&nbsp;&nbsp; 
+            محصول : <span style="color:blue"> {{ cartitem.product }} </span> &nbsp;&nbsp;|&nbsp;&nbsp;
+            وضعیت : <span style="color:Mediumseagreen"> پرداخت شده </span>
+            |&nbsp;&nbsp;
+            تعداد : <span style="color:blue"> {{ cartitem.quantity }} </span> &nbsp;&nbsp;
+
+            <div class="list-buttons" style="text-align:right;">
+                <a href="{% url 'order_update' cartitem.pk %}"><button class="button-edit">ویرایش</button></a>
+                <a href="{% url 'order_delete' cartitem.pk %}"><button class="button-delete">حذف</button></a>
+            </div>
+    </div>
+    </div>
+        {% endif %}
+    {% endfor %}
+
+
+
+
+
+
+<br><br>
+{% endblock %}

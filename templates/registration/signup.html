@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+  <title>ثبت نام</title>
+</head>
+<body style="background: #f0f0f0;font-size: 1rem">
+  <br>
+  <div align="center" >
+  <h2>ثبت نام</h2>
+  <hr color="gray" width="50%">
+  <b>
+  <form method="post">
+   {% csrf_token %}
+   {{ form.as_p }}
+   <button class="btn btn-success ml-2" type="submit">ثبت نام</button>
+  </form>
+  <p>حساب کاربری دارید ؟</p>
+  <p><a href="http://127.0.0.1:8000/accounts/login/" class="btn btn-primary ml-2">ورود به سیستم</a></p></b>
+</div>
+</body>
+{% endblock content %}
